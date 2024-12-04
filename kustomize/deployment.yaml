@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fluxrepo
+spec:
+  selector:
+    matchLabels:
+      app: fluxrepo
+  replicas: 1 # tells deployment to run 1 pods matching the template
+  template: # create pods using pod definition in this template
+    metadata:
+      labels:
+        app: fluxrepo
+    spec:
+      containers:
+      - name: fluxrepo
+        image: danimlamlacr.azurecr.io/icecreambot:0.0.6
+        ports:
+        - containerPort: 80
